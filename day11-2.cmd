@@ -12,7 +12,7 @@ for /f "delims=" %%i in ('findstr /N "^" "day11.txt"') do (
 		call :readline
 	)
 )
-for /l %%i in (1,1,1000) do (
+for /l %%i in (1,1,10000) do (
 	for /l %%x in (0,1,%monkeynum%) do (
 		for %%G in (!monkey[%%x][items]!) do (
 			set /A monkey[%%x][count]+=1
