@@ -1,5 +1,5 @@
 @echo off
-setlocal enabledelayedexpansion&goto sortloop
+setlocal enabledelayedexpansion
 set "output=0"
 set "output2=0"
 set "first="
