@@ -1,5 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
+set "chars=0abcdefghijklmnopqrstuvwxyz"
 set output=0
 set output2=0
 for /f %%i in ('findstr /N "^" "%~n0.txt"') do (
