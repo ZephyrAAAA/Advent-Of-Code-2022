@@ -15,10 +15,9 @@ for /f "delims=" %%i in ('findstr /N "^" "%~n0.txt"') do (
 		if %%z gtr !maxz! set maxz=%%z
 	)
 )
-set /a "maxx+=1,maxy+=1,maxz+=1"
-for /l %%x in (-1,1,%maxx%) do (
-	for /l %%y in (-1,1,%maxy%) do (
-		for /l %%z in (-1,1,%maxz%) do (
+for /l %%x in (0,1,%maxx%) do (
+	for /l %%y in (0,1,%maxy%) do (
+		for /l %%z in (0,1,%maxz%) do (
 			if defined list[%%x][%%y][%%z] (
 				set /a "a=%%x-1,b=%%x+1,c=%%y-1,d=%%y+1,e=%%z-1,f=%%z+1"
 				if not defined list[!a!][%%y][%%z] set /a output+=1
