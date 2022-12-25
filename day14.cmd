@@ -54,21 +54,22 @@ set /a floor=%maxy%+2
 	set y=0
 	set area[%x%][%y%]=O
 	:fallloop
-		set /a "tmpy=%y%+1,tmpx=%x%"
+		set /a "tmpy=%y%+1,left=%x%-1,right=%x%+1"
 		if !tmpy! lss %floor% (
-			if not defined area[!tmpx!][!tmpy!] (
+			if not defined area[%x%][%tmpy%] (
 				set "area[%x%][%y%]="
-				set "area[!tmpx!][!tmpy!]=O"
+				set "area[%x%][%tmpy%]=O"
+				set /a "x=%x%,y=%tmpy%"
 			) else (
-				set /a "tmpx=%x%-1"
-				if not defined area[!tmpx!][!tmpy!] (
+				if not defined area[%left%][%tmpy%] (
 					set "area[%x%][%y%]="
-					set "area[!tmpx!][!tmpy!]=O"
+					set "area[%left%][%tmpy%]=O"
+					set /a "x=%left%,y=%tmpy%"
 				) else (
-					set /a "tmpx=%x%+1"
-					if not defined area[!tmpx!][!tmpy!] (
+					if not defined area[%right%][%tmpy%] (
 						set "area[%x%][%y%]="
-						set "area[!tmpx!][!tmpy!]=O"
+						set "area[%right%][%tmpy%]=O"
+						set /a "x=%right%,y=%tmpy%"
 					) else (
 						echo found ground: %x%,%y%
 						if not defined 1done (
@@ -93,7 +94,6 @@ set /a floor=%maxy%+2
 				echo first complete: %output%
 			)
 		)
-		set /a "x=%tmpx%,y=%tmpy%"
 	goto fallloop
 :endloop
 echo %output%
